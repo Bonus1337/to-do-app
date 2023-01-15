@@ -1,19 +1,50 @@
 import styles from "./List.module.scss";
-import Column from "../Column/Column";
+import Column from "./../Column/Column";
+import ColumnForm from "./../ColumnForm/ColumnForm";
 import { useState } from "react";
 import shortid from "shortid";
 
 const List = () => {
-  const [value, setValue] = useState("");
   const [columns, setColumns] = useState([
-    { id: 1, title: "Books", icon: "book" },
-    { id: 2, title: "Movies", icon: "film" },
-    { id: 3, title: "Games", icon: "gamepad" },
+    {
+      id: 1,
+      title: "Books",
+      icon: "book",
+      cards: [
+        { id: 1, title: "This is Going to Hurt" },
+        { id: 2, title: "Interpreter of Maladies" },
+      ],
+    },
+    {
+      id: 2,
+      title: "Movies",
+      icon: "film",
+      cards: [
+        { id: 1, title: "Harry Potter" },
+        { id: 2, title: "Star Wars" },
+      ],
+    },
+    {
+      id: 3,
+      title: "Games",
+      icon: "gamepad",
+      cards: [
+        { id: 1, title: "The Witcher" },
+        { id: 2, title: "Skyrim" },
+      ],
+    },
   ]);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setColumns([...columns, { id: shortid(), title: value }]);
-    setValue("");
+
+  const addColumn = (newColumn) => {
+    setColumns([
+      ...columns,
+      {
+        id: shortid(),
+        title: newColumn.title,
+        icon: newColumn.icon,
+        cards: [],
+      },
+    ]);
   };
 
   return (
@@ -24,21 +55,20 @@ const List = () => {
         </h2>
       </header>
       <p className={styles.description}>
-        Interesting thins I want to check out
+        Interesting things I want to check out
       </p>
       <section className={styles.columns}>
         {columns.map((column) => (
-          <Column key={column.id} title={column.title} icon={column.icon} />
+          <Column
+            key={column.id}
+            id={column.id}
+            title={column.title}
+            icon={column.icon}
+            cards={column.cards}
+          />
         ))}
       </section>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-        />
-        <button>Add column</button>
-      </form>
+      <ColumnForm action={addColumn} />
     </div>
   );
 };
