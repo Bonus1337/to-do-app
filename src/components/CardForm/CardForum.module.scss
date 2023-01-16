@@ -1,0 +1,10 @@
+@import '../../styles/settings.scss';
+
+.cardForm {
+  display: flex;
+  justify-content: center;
+}
+
+.cardForm input {
+  border: 1px solid lighten($color-dark, 60%);
+}
