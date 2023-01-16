@@ -1,6 +1,6 @@
 import styles from './Column.module.scss';
 import Card from '../Card/Card';
-import CardForm from '../ColumnForm/ColumnForm';
+import CardForm from '../CardForm/CardForm';
 
 const Column = props => {
   return (
