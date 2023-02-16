@@ -1,0 +1,14 @@
+@import "../../styles/settings.scss";
+
+.listForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+
+  span {
+    position: relative;
+    top: -($base-size - 5);
+    margin: 10px;
+  }
+}
