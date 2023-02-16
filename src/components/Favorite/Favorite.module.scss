@@ -1,0 +1,9 @@
+@import "../../styles/settings.scss";
+
+.favorite {
+  padding: $base-size;
+}
+
+.title + .subtitle {
+  margin-top: (-$base-size * 3);
+}
