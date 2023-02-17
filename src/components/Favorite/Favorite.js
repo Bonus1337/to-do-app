@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { getAllFavoriteCards } from "../../redux/store";
+import { getAllFavoriteCards } from "../../redux/cardsRedux";
 import Card from "../Card/Card";
 import PageTitle from "../PageTitle/PageTitle";
 import styles from "./Favorite.module.scss";
